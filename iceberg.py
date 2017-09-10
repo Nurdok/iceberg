@@ -126,6 +126,27 @@ def solve_file(input_path: Path, output_path: Path) -> None:
         write_solution(output_file, solution)  # type: ignore
 
 
+def _draw_graph(graph):
+    """Draw a graph and save it to a file, for visualization and debugging."""
+    import matplotlib.pyplot as plt
+    import networkx as nx
+    pos = {point: (point.x, point.y) for point in graph.nodes()}
+    node_labels = {point: f'({point.x}, {point.y})' for point in graph.nodes()}
+    edge_labels = {edge[:2]: edge[2]['distance']
+                   for edge in graph.edges(data=True)}
+    nx.draw_networkx(graph,
+                     pos=pos,
+                     labels=node_labels,
+                     hold=True)
+    print(edge_labels)
+    nx.draw_networkx_edge_labels(graph,
+                                 pos=pos,
+                                 edge_labels=edge_labels,
+                                 rotate=False)
+    plt.savefig(r'graph.png')
+    print(graph.edges())
+
+
 def main():
     """Run the CLI."""
     args = docopt(__doc__)
