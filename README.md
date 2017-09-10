@@ -38,7 +38,7 @@ of nodes and figure out if a route between them is possible (not blocked by
 and iceberg). If the route is clear, we add an edge to the graph between
 the two nodes and mark its weight as the geometric distance between them.
 
-The graph might look something like this (for a starting point of ``(5, 0)``,
+The graph might look something like this (for a starting point of ``(0, 0)``,
 an end point of ``(5, 5)`` and a triangular iceberg in the middle):
 
 ![alt text](graph.png)
